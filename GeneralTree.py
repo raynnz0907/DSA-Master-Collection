@@ -8,6 +8,14 @@ class TreeNode:
         child.parent = self
         self.children.append(child)
 
+    def get_level(self):
+        level = 0
+        p = self.parent
+        while p:
+            level += 1 
+            p = p.parent
+        return level
+
     def print_tree(self):
         print(self.data)
         if self.children:
