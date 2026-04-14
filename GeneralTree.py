@@ -7,3 +7,15 @@ class TreeNode:
     def add_child(self,child):
         child.parent = self
         self.children.append(child)
+
+def build_product_tree():
+    root = TreeNode("Electronics")
+
+    laptop = TreeNode("Laptop")
+
+    root.add_child(laptop)
+
+
+
+if __name__ == '__main__':
+    build_product_tree()
