@@ -10,8 +10,9 @@ class TreeNode:
 
     def print_tree(self):
         print(self.data)
-        for child in self.children:
-            print(child.data)
+        if self.children:
+            for child in self.children:
+                child.print_tree()
 
 def build_product_tree():
     root = TreeNode("Electronics")
