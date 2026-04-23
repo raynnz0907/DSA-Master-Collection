@@ -49,3 +49,21 @@ class HashTable:
         print("\nHash Table Contents:")
         for i, item in enumerate(self.table):
             print(f"Index {i}: {item}")
+    
+ht = HashTable(5)
+
+# Adding products
+ht.insert("Laptop", 50000)
+ht.insert("Phone", 20000)
+ht.insert("Tablet", 15000)
+ht.insert("Watch", 5000)
+ht.insert("Camera", 30000)
+
+# Display table
+ht.display()
+
+# Searching products
+print("\nSearch Results:")
+print("Phone:", ht.search("Phone"))
+print("Camera:", ht.search("Camera"))
+print("TV:", ht.search("TV"))
