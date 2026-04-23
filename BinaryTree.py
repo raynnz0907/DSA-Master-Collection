@@ -34,4 +34,17 @@ class BinarySearchTreeNode:
             elements += self.right.print_in_order_traversal()
 
         return elements
+    
+def build_tree(elements):
+    root = BinarySearchTreeNode(elements[0])
+
+    for i in range(0,len(elements)):
+        root.add_data(elements[i])
+
+    return root
+
+
+if __name__ == '__main__':
+    elements = [14,16,413,67,15,13]
+
 
