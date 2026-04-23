@@ -27,3 +27,25 @@ class HashTable:
                 return
         
         self.table[index] = (key, value)
+    
+     # Search for a product
+    def search(self, key):
+        index = self.hash_function(key)
+        original_index = index
+
+        while self.table[index] is not None:
+            if self.table[index][0] == key:
+                return self.table[index][1]
+
+            index = (index + 1) % self.size
+
+            if index == original_index:
+                return None
+        
+        return None
+
+    # Display the hash table
+    def display(self):
+        print("\nHash Table Contents:")
+        for i, item in enumerate(self.table):
+            print(f"Index {i}: {item}")
