@@ -3,7 +3,7 @@ def linearsearch(list1,target):
     for i in range(len(list1)):
         if list1[i] == target:
             flag = 1
-            print("Found")
+            print("Found at ",i)
     if flag == 0:
         print("Target not found")
 
