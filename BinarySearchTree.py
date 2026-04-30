@@ -36,6 +36,29 @@ class BinarySearchTreeNode:
                     return self.left.search(val)
                 else: 
                     return False
+    
+def preordertrav(root):
+        if root is None:
+            return
+        print(root.data, end=" ")
+        preordertrav(root.left)
+        preordertrav(root.right)
+
+def inordertrav(root):
+     if root is None:
+          return
+     inordertrav(root.left)
+     print(root.data, end=" ")
+     inordertrav(root.right)
+    
+def postordeertrav(root):
+     if root is None:
+          return
+     postordeertrav(root.left)
+     postordeertrav(root.right)
+     print(root.data, end=" ")
+
+
             
 
 if __name__ == "__main__":
@@ -43,5 +66,12 @@ if __name__ == "__main__":
     root = BinarySearchTreeNode(values[0])
     for val in values[1:]:
         root.insert(val)
-  
-    print(root.search(42))
+
+    print("\n Preorder")
+    preordertrav(root)
+
+    print("\nInOrder")
+    inordertrav(root)
+
+    print("\npostorder")
+    postordeertrav(root)
