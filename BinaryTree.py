@@ -1,4 +1,6 @@
-class BinarySearchTreeNode:
+from collections import deque
+
+class BinaryTreeNode:
     def __init__ (self,data):
         self.data = data
         self.left = None
@@ -12,13 +14,13 @@ class BinarySearchTreeNode:
             if self.left:
                 self.left.add_child(data)
             else:
-                self.left = BinarySearchTreeNode(data)
+                self.left = BinaryTreeNode(data)
             
         else:
             if self.right:
                 self.right.add_child(data)
             else:
-                self.right = BinarySearchTreeNode(data)
+                self.right = BinaryTreeNode(data)
 
 def preordertrav(subtree):
     if subtree is None:
@@ -42,7 +44,20 @@ def postordertrav(subtree):
     postordertrav(subtree.right)
     print(subtree.data, end=" ")
 
+def bfstrav(root):
+    if root is None:
+        return
+    q = deque()
+    q.append(root)
 
+    while q:
+        node = q.popleft()
+        print(node.data, end=" ")
+
+        if node.left is not None:
+            q.append(node.left)
+        if node.right is not None:
+            q.append(node.right)
 
 
 if __name__ == "__main__":
@@ -55,7 +70,7 @@ if __name__ == "__main__":
 
     values = [31,51,61,7,14,46]
 
-    root = BinarySearchTreeNode(values[0])
+    root = BinaryTreeNode(values[0])
 
     for val in values[1:]:
         root.add_child(val)
@@ -68,3 +83,6 @@ if __name__ == "__main__":
 
     print("\npostorder")
     postordertrav(root)
+
+    print("\nBFS")
+    bfstrav(root)
