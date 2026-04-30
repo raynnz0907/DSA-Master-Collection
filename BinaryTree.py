@@ -1,50 +1,52 @@
 class BinarySearchTreeNode:
-    def __init__(self,data):
+    def __init__ (self,data):
         self.data = data
         self.left = None
         self.right = None
 
-    def add_data(self,data):
-        if self.data == data:
-            return
-        
-        elif self.data > data:
-            if self.left:
-                self.left.add_data(data)
-            else:
-                self.left = BinarySearchTreeNode(data)
-        
-        else:
-            if self.right:
-                self.right.add_data(data)
-            else:
-                self.right = BinarySearchTreeNode(data)
+def preordertrav(subtree):
+    if subtree is None:
+        return
+    print(subtree.data, end=" ")
+    preordertrav(subtree.left)
+    preordertrav(subtree.right)
+
     
-    def print_in_order_traversal(self):
-        elements = []
+def inordertrav(subtree):
+    if subtree is None:
+        return
+    inordertrav(subtree.left)
+    print(subtree.data, end= " ")
+    inordertrav(subtree.right)
 
-        #Visiting the left tree
-        if self.left:
-            elements += self.left.print_in_order_traversal()
-        
-        #The root node
-        elements.append(self.data)
-
-        if self.right:
-            elements += self.right.print_in_order_traversal()
-
-        return elements
-    
-def build_tree(elements):
-    root = BinarySearchTreeNode(elements[0])
-
-    for i in range(0,len(elements)):
-        root.add_data(elements[i])
-
-    return root
+def postordertrav(subtree):
+    if subtree is None:
+        return
+    postordertrav(subtree.left)
+    postordertrav(subtree.right)
+    print(subtree.data, end=" ")
 
 
-if __name__ == '__main__':
-    elements = [14,16,413,67,15,13]
+if __name__ == "__main__":
+    # Constructing the binary tree:
+    #        1
+    #       / \
+    #      2   3
+    #     / \   \
+    #    4   5   6
 
+    subtree = BinarySearchTreeNode(1)
+    subtree.left = BinarySearchTreeNode(2)
+    subtree.right = BinarySearchTreeNode(3)
+    subtree.left.left = BinarySearchTreeNode(4)
+    subtree.left.right = BinarySearchTreeNode(5)
+    subtree.right.right = BinarySearchTreeNode(6)
 
+    print("\nPreOrder")
+    preordertrav(subtree)
+
+    print("\nInOrder")
+    inordertrav(subtree)
+
+    print("\npostorder")
+    postordertrav(subtree)
