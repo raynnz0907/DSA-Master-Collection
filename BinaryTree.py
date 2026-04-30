@@ -3,6 +3,22 @@ class BinarySearchTreeNode:
         self.data = data
         self.left = None
         self.right = None
+    
+    def add_child(self,data):
+        if data == self.data:
+            return
+        
+        if data < self.data:
+            if self.left:
+                self.left.add_child(data)
+            else:
+                self.left = BinarySearchTreeNode(data)
+            
+        else:
+            if self.right:
+                self.right.add_child(data)
+            else:
+                self.right = BinarySearchTreeNode(data)
 
 def preordertrav(subtree):
     if subtree is None:
@@ -27,6 +43,8 @@ def postordertrav(subtree):
     print(subtree.data, end=" ")
 
 
+
+
 if __name__ == "__main__":
     # Constructing the binary tree:
     #        1
@@ -35,18 +53,18 @@ if __name__ == "__main__":
     #     / \   \
     #    4   5   6
 
-    subtree = BinarySearchTreeNode(1)
-    subtree.left = BinarySearchTreeNode(2)
-    subtree.right = BinarySearchTreeNode(3)
-    subtree.left.left = BinarySearchTreeNode(4)
-    subtree.left.right = BinarySearchTreeNode(5)
-    subtree.right.right = BinarySearchTreeNode(6)
+    values = [31,51,61,7,14,46]
+
+    root = BinarySearchTreeNode(values[0])
+
+    for val in values[1:]:
+        root.add_child(val)
 
     print("\nPreOrder")
-    preordertrav(subtree)
+    preordertrav(root)
 
     print("\nInOrder")
-    inordertrav(subtree)
+    inordertrav(root)
 
     print("\npostorder")
-    postordertrav(subtree)
+    postordertrav(root)
