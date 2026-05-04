@@ -1,6 +1,3 @@
-# -----------------------------
-# Basic Tree (Hierarchy)
-# -----------------------------
 class CategoryNode:
     def __init__(self, name):
         self.name = name
@@ -26,9 +23,6 @@ class CategoryTree:
                 self.display(child, level + 2)
 
 
-# -----------------------------
-# AVL Tree (Balanced Search)
-# -----------------------------
 class AVLNode:
     def __init__(self, key):
         self.key = key
