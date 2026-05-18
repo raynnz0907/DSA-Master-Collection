@@ -2,11 +2,11 @@ def quicksort(arr):
     if len(arr) <= 1:
         return arr
     
-    pivot = arr[len(arr)//2]
-
-    left = []
+    pivot = arr[len(arr) // 2]
+    
     right = []
     middle = []
+    left = []
 
     for element in arr:
         if element < pivot:
@@ -15,19 +15,5 @@ def quicksort(arr):
             right.append(element)
         else:
             middle.append(element)
-
+    
     return quicksort(left) + middle + quicksort(right)
-
-n = int(input("Enter number of elements: "))
-
-user_list = []
-print("Enter the elements:")
-
-for i in range(n):
-    num = int(input())
-    user_list.append(num)
-
-# Sorting
-sorted_list = quicksort(user_list)
-
-print("Sorted list:", sorted_list)
